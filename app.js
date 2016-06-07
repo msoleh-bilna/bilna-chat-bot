@@ -24,6 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.get('/webhook', function (req, res) {
+  if (req.query['hub.verify_token'] === "EAAXLNrHrrHQBABjWcg1ITerG2zZCZBbX7YNzo4rcsavKLLZCL1fmHFu9XQvX4KL7GCahtw27IgRogc3GzcInkmWDswveBYulDIMNfKG6DfXxow8w0vKhgqOyxslSkudIXMl4X8PzGjN5tagRlNjDQnZADnJFw3D6k4P9TIUfFGClPwjGmmKN") {
+    res.send(req.query['hub.challenge']);
+  } else {
+    res.send('Error, wrong validation token');    
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

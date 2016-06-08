@@ -26,7 +26,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.get('/webhook', function (req, res) {
   if (req.query['hub.verify_token'] === "bilna_facebook_chat_bot_apps") {
-    res.send(req.query['hub.challenge']);
+    // res.send(req.query['hub.challenge']);
+    res.send("test")
   } else {
     res.send('Error, wrong validation token');    
   }

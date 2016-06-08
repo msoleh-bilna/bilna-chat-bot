@@ -32,6 +32,8 @@ app.get('/webhook', function (req, res) {
   }
 });
 
+var token = "EAAXLNrHrrHQBAE20bSJeEJNkZB0GrcEVtZCXYkzMJTCfAnlHUAL9RJZBZB75FIZAjZAhoJHRb8gO7r3CtCfmK3OE6xhMReBbzWTzSmQNzszmPOVnEz4OmGrfBwc5XUkbIouvfRX2SwTLZBuXayryKdLZCYKzDVXwkQchVblrYnyP19ZAujkLhZBwqF";
+
 app.post('/webhook/', function (req, res) {
   var messaging_events = req.body.entry[0].messaging
   for (var i = 0; i < messaging_events.length; i++) {
@@ -53,8 +55,6 @@ app.post('/webhook/', function (req, res) {
   }
   res.sendStatus(200)
 })
-
-var token = "EAAXLNrHrrHQBAE20bSJeEJNkZB0GrcEVtZCXYkzMJTCfAnlHUAL9RJZBZB75FIZAjZAhoJHRb8gO7r3CtCfmK3OE6xhMReBbzWTzSmQNzszmPOVnEz4OmGrfBwc5XUkbIouvfRX2SwTLZBuXayryKdLZCYKzDVXwkQchVblrYnyP19ZAujkLhZBwqF";
 
 function sendTextMessage(sender, text) {
   messageData = {

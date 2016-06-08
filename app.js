@@ -26,8 +26,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.get('/webhook', function (req, res) {
   if (req.query['hub.verify_token'] === "bilna_facebook_chat_bot_apps") {
-    // res.send(req.query['hub.challenge']);
-    res.send("test")
+    res.send(req.query['hub.challenge']);
+    // res.send("test")
   } else {
     res.send('Error, wrong validation token');    
   }
@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
     }
     if (event.postback) {
       var text = JSON.stringify(event.postback)
-      sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+      sendTextMessage(sender, "Postback received: "+text.substring(0, 200))
       continue
     }
   }

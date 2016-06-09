@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 /* GET home page. */
 router.get('/', function(req, res) {
   if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   } else {
-    res.send('Error, wrong validation token');    
+    res.send('Error, wrong validation token');
   }
 });
 

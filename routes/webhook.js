@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  if (req.query['hub.verify_token'] === "bilna_facebook_chat_bot_apps") {
+  if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   } else {
     res.send('Error, wrong validation token');    

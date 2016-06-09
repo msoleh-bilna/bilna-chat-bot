@@ -29,14 +29,12 @@ router.post('/', jsonParser, function (req, res) {
 function sendTextMessage(sender, text) {
   console.log(text)
   if (text.toLowerCase() == "ping") {
-    text = {text: "Echo: " + text }
     request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,
       method: 'POST',
-      json: {
+      body: {
         recipient: {id: recipientId},
-        message: text,
+        message: {text: "Echo: " + text },
       }
     }, function(error, response, body) {
       if (!error && response.statusCode == 200) {

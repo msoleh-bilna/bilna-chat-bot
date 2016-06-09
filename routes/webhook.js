@@ -24,9 +24,9 @@ router.post('/', function (req, res) {
       if (event.message && event.message.text) {
           sendTextMessage(event.sender.id, event.message.text);
       }
-      res.sendStatus(200);
+      res.send(200);
   }
-  res.sendStatus(200);
+  res.send(200);
 })
 
 function sendTextMessage(sender, text) {

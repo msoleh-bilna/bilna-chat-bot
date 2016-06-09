@@ -10,7 +10,6 @@ router.get('/', function(req, res) {
   }
 });
 
-
 // var token = "EAAXLNrHrrHQBAMWiEdoVzZCUu5X5rkzjavEpnZBXbA4yZAsPZBa4UzXsmlU9sxPTo5Se8t61yuvZAnZAJHP4jH6IQtVKGME5S8pGkBzwPG1k3F2Y9m7ioWrfhZAUN8lffjAUGkLZBwQaoB1Mj1HfmeSNHY5XLpZBcjbHoZAcJSBJwEK5QHZBdLE7zZBC";
 
 router.post('/', function (req, res) {
@@ -25,7 +24,7 @@ router.post('/', function (req, res) {
 })
 
 function sendTextMessage(sender, text) {
-  console.log(sender)
+  console.log('Sender ID : '+sender)
   console.log(text)
   request({
       url: 'https://graph.facebook.com/v2.6/me/messages',

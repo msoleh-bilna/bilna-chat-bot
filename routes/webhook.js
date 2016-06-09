@@ -28,6 +28,7 @@ function sendTextMessage(sender, text) {
   console.log(text)
   if (text.toLowerCase() == "ping") {
     text = {text: "Echo: " + text }
+    console.log(process.env.PAGE_ACCESS_TOKEN)
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},

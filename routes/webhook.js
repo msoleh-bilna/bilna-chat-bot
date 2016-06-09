@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -13,7 +15,7 @@ router.get('/', function(req, res) {
 
 // var token = "EAAXLNrHrrHQBAMWiEdoVzZCUu5X5rkzjavEpnZBXbA4yZAsPZBa4UzXsmlU9sxPTo5Se8t61yuvZAnZAJHP4jH6IQtVKGME5S8pGkBzwPG1k3F2Y9m7ioWrfhZAUN8lffjAUGkLZBwQaoB1Mj1HfmeSNHY5XLpZBcjbHoZAcJSBJwEK5QHZBdLE7zZBC";
 
-router.post('/', function (req, res) {
+router.post('/', jsonParser, function (req, res) {
   var events = req.body.entry[0].messaging;
   for (i = 0; i < events.length; i++) {
     var event = events[i];
@@ -21,7 +23,7 @@ router.post('/', function (req, res) {
       sendTextMessage(event.sender.id, event.message.text);
     }
   }
-  res.send(200);
+  res.sendStatus(200);
 })
 
 function sendTextMessage(sender, text) {

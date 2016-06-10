@@ -18,13 +18,13 @@ router.get('/', function(req, res) {
 
 router.post('/', jsonParser, function (req, res) {
   var events = req.body.entry[0].messaging;
-  // for (i = 0; i < events.length; i++) {
-    // var event = events[i];
-    var event = events[0];
+  for (i = 0; i < events.length; i++) {
+    var event = events[i];
+    // var event = events[0];
     if (!(Object.keys(event.message) === 0) && event.message.text) {
       sendTextMessage(event.sender.id, event.message.text);
     }
-  // }
+  }
   res.sendStatus(200);
 })
 

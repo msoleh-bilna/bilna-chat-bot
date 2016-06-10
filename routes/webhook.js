@@ -32,6 +32,7 @@ function sendTextMessage(sender, text) {
   if (text.toLowerCase() === "ping") {
     console.log('inside if: '+text)
     var cmd = 'curl -X POST -H "Content-Type: application/json" -d \'{"recipient":{"id":"'+recipientId+'"}, "message":{"text":"hello, '+text+'!"}}\' "https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN+'"';
+    console.log(cmd);
     exec(cmd, function(error, stdout, stderr) {
       console.log('Masuk exec: '+stderr+' : '+error)
     });

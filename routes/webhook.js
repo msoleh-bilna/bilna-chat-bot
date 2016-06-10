@@ -38,7 +38,7 @@ function sendTextMessage(sender, text) {
     console.log('send command: '+cmd);
     console.log('inside if after cmd: '+text)
     exec(cmd, function(error, stdout, stderr) {
-      console.log('Masuk exec: '+stderr+' : '+error)
+      console.log('Masuk exec, stdout: '+stdout)
     });
     // request({
     //   url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,

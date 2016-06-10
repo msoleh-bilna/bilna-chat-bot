@@ -29,35 +29,18 @@ router.post('/', jsonParser, function (req, res) {
 })
 
 function sendTextMessage(sender, text) {
-  console.log('outside if: '+text)
-  if (text.toLowerCase() === "ping") {
+  // console.log('outside if: '+text)
+  // if (text.toLowerCase() === "ping") {
     var recipient = '{"id": "'+sender+'"}'
     var message = '{"text": "hello, '+text+'"}'
     var data = '{"recipient": '+recipient+', "message": '+message+'}'
     var cmd = 'curl -X POST -H "Content-Type: application/json" -d \''+data+'\' "https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN+'"';
-    console.log('send command: '+cmd);
-    console.log('inside if after cmd: '+text)
+    // console.log('send command: '+cmd);
+    // console.log('inside if after cmd: '+text)
     exec(cmd, function(error, stdout, stderr) {
-      console.log('Masuk exec, stdout: '+stdout)
+      // console.log('Masuk exec, stdout: '+stdout)
     });
-    // request({
-    //   url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,
-    //   method: 'POST',
-    //   body: {
-    //     recipient: {id: recipientId},
-    //     message: {text: "Echo: " + text },
-    //   }
-    // }, function(error, response, body) {
-    //   // if (!error && response.statusCode == 200) {
-    //     console.log(body) // Show the HTML for the Google homepage.
-    //   // }
-    //   if (error) {
-    //     console.log('Error sending message: ', error);
-    //   } else if (response.body.error) {
-    //     console.log('Error: ', response.body.error);
-    //   }
-    // });
-  }
+  // }
 }
 
 module.exports = router;

@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
+var exec = require('child_process').exec;
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -30,23 +31,27 @@ function sendTextMessage(sender, text) {
   console.log('outside if: '+text)
   if (text.toLowerCase() === "ping") {
     console.log('inside if: '+text)
-    request({
-      url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,
-      method: 'POST',
-      body: {
-        recipient: {id: recipientId},
-        message: {text: "Echo: " + text },
-      }
-    }, function(error, response, body) {
-      // if (!error && response.statusCode == 200) {
-        console.log(body) // Show the HTML for the Google homepage.
-      // }
-      if (error) {
-        console.log('Error sending message: ', error);
-      } else if (response.body.error) {
-        console.log('Error: ', response.body.error);
-      }
+    var cmd = 'curl -X POST -H "Content-Type: application/json" -d \'{"recipient":{"id":"'+recipientId+'"}, "message":{"text":"hello, '+text+'!"}}\' "https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN+'"';
+    exec(cmd, function(error, stdout, stderr) {
+      console.log(error)
     });
+    // request({
+    //   url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,
+    //   method: 'POST',
+    //   body: {
+    //     recipient: {id: recipientId},
+    //     message: {text: "Echo: " + text },
+    //   }
+    // }, function(error, response, body) {
+    //   // if (!error && response.statusCode == 200) {
+    //     console.log(body) // Show the HTML for the Google homepage.
+    //   // }
+    //   if (error) {
+    //     console.log('Error sending message: ', error);
+    //   } else if (response.body.error) {
+    //     console.log('Error: ', response.body.error);
+    //   }
+    // });
   }
 }
 

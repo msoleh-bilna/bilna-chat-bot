@@ -27,8 +27,9 @@ router.post('/', jsonParser, function (req, res) {
 })
 
 function sendTextMessage(sender, text) {
+  console.log('outside if: '+text)
   if (text.toLowerCase() === "ping") {
-    console.log(text)
+    console.log('inside if: '+text)
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN,
       method: 'POST',

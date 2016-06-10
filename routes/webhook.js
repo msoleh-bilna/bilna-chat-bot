@@ -6,13 +6,13 @@ var jsonParser = bodyParser.json();
 var exec = require('child_process').exec;
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
-    res.send(req.query['hub.challenge']);
-  } else {
-    res.send('Error, wrong validation token');
-  }
-});
+// router.get('/', function(req, res) {
+//   if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
+//     res.send(req.query['hub.challenge']);
+//   } else {
+//     res.send('Error, wrong validation token');
+//   }
+// });
 
 // var token = "EAAXLNrHrrHQBAMWiEdoVzZCUu5X5rkzjavEpnZBXbA4yZAsPZBa4UzXsmlU9sxPTo5Se8t61yuvZAnZAJHP4jH6IQtVKGME5S8pGkBzwPG1k3F2Y9m7ioWrfhZAUN8lffjAUGkLZBwQaoB1Mj1HfmeSNHY5XLpZBcjbHoZAcJSBJwEK5QHZBdLE7zZBC";
 

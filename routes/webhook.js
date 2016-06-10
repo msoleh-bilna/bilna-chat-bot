@@ -33,7 +33,7 @@ function sendTextMessage(sender, text) {
   if (text.toLowerCase() === "ping") {
     var recipient = '{"id": "'+sender+'"}'
     var message = '{"text": "hello, "'+text+'"}'
-    var data = '{"recipient": "'+recipient+'", "message": "'+message+'"}'
+    var data = '{"recipient": '+recipient+', "message": '+message+'}'
     var cmd = 'curl -X POST -H "Content-Type: application/json" -d \''+data+'\' "https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN+'"';
     console.log('send command: '+cmd);
     console.log('inside if after cmd: '+text)

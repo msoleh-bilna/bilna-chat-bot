@@ -38,9 +38,8 @@ function sendTextMessage(sender, text) {
     var subscribe = 'curl -X POST "https://graph.facebook.com/v2.6/me/subscribed_apps?access_token='+process.env.PAGE_ACCESS_TOKEN+'"'
     var cmd = 'curl -X POST -H "Content-Type: application/json" -d \''+data+'\' "https://graph.facebook.com/v2.6/me/messages?access_token='+process.env.PAGE_ACCESS_TOKEN+'"';
     exec(cmd, function(error, stdout, stderr) {
-      exec(subscribe, function(error1, stdout1, stderr1) {
-        // console.log('Masuk exec, stdout: '+stdout)
-      });
+    });
+    exec(subscribe, function(error1, stdout1, stderr1) {
     });
     // console.log('send command: '+cmd);
     // console.log('inside if after cmd: '+text)
